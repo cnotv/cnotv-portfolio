@@ -290,6 +290,29 @@ export const OWNER_PROFILES = [
   { label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/leogiuseppe/' },
   { label: 'GitHub', icon: 'github', url: 'https://github.com/cnotv' }
 ]
+/** The other cnotv sites, each with the repository it is built from. */
+export const SITE_LINKS = [
+  {
+    label: 'Games',
+    url: 'https://games.cnotv.xyz',
+    repository: 'https://github.com/cnotv/games-lobby'
+  },
+  {
+    label: 'Strudel',
+    url: 'https://strudel.cnotv.xyz',
+    repository: 'https://github.com/cnotv/strudel-node-editor'
+  },
+  {
+    label: 'Lab',
+    url: 'https://lab.cnotv.xyz',
+    repository: 'https://github.com/cnotv/generative-art'
+  },
+  {
+    label: 'Portfolio',
+    url: 'https://cnotv.xyz',
+    repository: 'https://github.com/cnotv/cnotv-portfolio'
+  }
+]
 /** Where to read how this page was built: its journey, the tutorials and the toolkit behind it. */
 export const BUILD_NOTES = [
   {

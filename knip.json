@@ -1,0 +1,10 @@
+{
+  "entry": [
+    "src/main.ts",
+    "scripts/*.{mjs,js}",
+    "rules/*.js",
+    "eslint.config.js",
+    "src/test-setup.ts"
+  ],
+  "project": ["src/**/*.{ts,vue}", "!src/**/*.test.ts", "!src/**/*.browser.test.ts"]
+}
