@@ -71,30 +71,12 @@ importers:
       '@vue-flow/core':
         specifier: ^1.48.2
         version: 1.48.2(vue@3.5.25(typescript@5.4.5))
-      '@webgamekit/canvas-editor':
-        specifier: workspace:*
-        version: link:packages/canvas-editor
-      '@webgamekit/chat':
-        specifier: workspace:*
-        version: link:packages/chat
-      '@webgamekit/controls':
-        specifier: workspace:^
-        version: link:packages/controls
-      '@webgamekit/dictionary':
-        specifier: workspace:*
-        version: link:packages/dictionary
-      '@webgamekit/logic':
-        specifier: workspace:^
-        version: link:packages/logic
-      '@webgamekit/multiplayer-client':
-        specifier: workspace:^
-        version: link:packages/multiplayer-client
-      '@webgamekit/multiplayer-p2p':
-        specifier: workspace:^
-        version: link:packages/multiplayer-p2p
+      '@webgamekit/animation':
+        specifier: ^0.1.0
+        version: 0.1.0(three@0.178.0)
       '@webgamekit/threejs':
-        specifier: workspace:^
-        version: link:packages/threejs
+        specifier: ^0.1.0
+        version: 0.1.0(three@0.178.0)
       dat.gui:
         specifier: ^0.7.9
         version: 0.7.9
@@ -2252,6 +2234,16 @@ packages:
 
   '@vueuse/shared@10.11.1':
     resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
+
+  '@webgamekit/animation@0.1.0':
+    resolution: {integrity: sha512-+JWZq1H7ZI8ZH3fwhqQonfcyD1FdB+OmsJMHrBb7ZRlCN5zYWobFlQc2WwW3sIpTNDExiCuG0AvRp6FMXQcrFA==}
+    peerDependencies:
+      three: ^0.178.0
+
+  '@webgamekit/threejs@0.1.0':
+    resolution: {integrity: sha512-9Hh0MgyGN7hGVLdPJVrZdOSBdjwciy59dB5BxJldgxkdHLPtXdSk2bj1YOnDqNTofHkcvfkOsc7EKEcn4m03sQ==}
+    peerDependencies:
+      three: ^0.178.0
 
   '@webgpu/types@0.1.67':
     resolution: {integrity: sha512-uk53+2ECGUkWoDFez/hymwpRfdgdIn6y1ref70fEecGMe5607f4sozNFgBk0oxlr7j2CRGWBEc3IBYMmFdGGTQ==}
@@ -7363,6 +7355,15 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  '@webgamekit/animation@0.1.0(three@0.178.0)':
+    dependencies:
+      three: 0.178.0
+
+  '@webgamekit/threejs@0.1.0(three@0.178.0)':
+    dependencies:
+      '@webgamekit/animation': 0.1.0(three@0.178.0)
+      three: 0.178.0
 
   '@webgpu/types@0.1.67': {}
 
