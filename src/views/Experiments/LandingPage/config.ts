@@ -313,6 +313,11 @@ export const SITE_LINKS = [
     repository: 'https://github.com/cnotv/cnotv-portfolio'
   }
 ]
+/** Legal pages every German site beyond a purely private one must link from every page. */
+export const LEGAL_LINKS = [
+  { label: 'Impressum', path: '/impressum' },
+  { label: 'Datenschutz', path: '/datenschutz' }
+]
 /** Where to read how this page was built: its journey, the tutorials and the toolkit behind it. */
 export const BUILD_NOTES = [
   {

@@ -50,7 +50,8 @@ import {
   OWNER_SUMMARY,
   OWNER_PROFILES,
   BUILD_NOTES,
-  SITE_LINKS
+  SITE_LINKS,
+  LEGAL_LINKS
 } from './config'
 import type { LogoJumpPath, LogoRest, HeroLook, HeroLookParts } from './types'
 import { createHeroLook, registerLookElements, refreshLookElements, getNextLook } from './heroLook'
@@ -933,7 +934,12 @@ onUnmounted(() => {
           <ul class="landing-page__notes-list">
             <li v-for="site in SITE_LINKS" :key="site.url">
               <a class="landing-page__note" :href="site.url">{{ site.label }}</a>
-              (<a class="landing-page__note" :href="site.repository" target="_blank" rel="noopener"
+              (<a
+                class="landing-page__note"
+                :href="site.repository"
+                :aria-label="`${site.label} source code`"
+                target="_blank"
+                rel="noopener"
                 >code</a
               >)
             </li>
@@ -945,6 +951,13 @@ onUnmounted(() => {
               <a class="landing-page__note" :href="note.url" target="_blank" rel="noopener">
                 {{ note.label }}
               </a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="landing-page__notes" aria-label="Legal">
+          <ul class="landing-page__notes-list">
+            <li v-for="legal in LEGAL_LINKS" :key="legal.path">
+              <RouterLink class="landing-page__note" :to="legal.path">{{ legal.label }}</RouterLink>
             </li>
           </ul>
         </nav>
