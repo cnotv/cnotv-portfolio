@@ -1,8 +1,9 @@
-# Generative Art — WebGameKit
+# cnotv portfolio
 
-A pnpm workspace monorepo: a framework-agnostic toolkit for 3D scenes, games and animation
-in `packages/@webgamekit/*`, and a Vue 3 playground that uses it in `src/`. Architecture:
-`documentation/docs/architecture/monorepo.md`.
+The portfolio site served at cnotv.xyz: one Vue 3 page with a Three.js hero and skills city,
+in `src/views/Experiments/LandingPage/`. It was cut out of
+[cnotv/generative-art](https://github.com/cnotv/generative-art) and uses its
+`@webgamekit/animation` and `@webgamekit/threejs` packages from npm.
 
 This file holds the rules that apply to every change. Rules for one area load from
 `.claude/rules/`, procedures from agent-base's `workflow` plugin and `.claude/skills/` — all
@@ -68,10 +69,9 @@ owes them before the pull request is marked ready.
 - **Spell out a domain acronym on first use**, e.g. `ccd` (continuous collision detection).
 - **DRY and KISS.** If a pattern appears twice, extract it. Prefer the simplest thing that
   works over an abstraction you might need later.
-- **Reuse before writing.** Check `src/components/`, `src/utils/` and `src/stores/` first.
-  `src/components/` has five tiers — `ui/` primitives, the `LobbyUI/` overlay kit, the
-  `panels/` system, `<Feature>/` folders and shared root components — and `vue-components.md`
-  says which to reach for. Verify a dependency is actively maintained before adding it.
+- **Reuse before writing.** Check `src/components/` (the `ui/` primitives and shared root
+  components), `src/utils/` and `src/stores/` first. Verify a dependency is actively
+  maintained before adding it.
 - **No pointless wrappers.** Before adding a `<div>` or `<section>`, ask what layout,
   semantics or behaviour it adds that the parent cannot. If none, drop it.
 
@@ -87,52 +87,38 @@ owes them before the pull request is marked ready.
 
 ## Where output goes
 
-Documentation is Docusaurus, in `documentation/`, never a standalone markdown file elsewhere.
-Every explanation has one home. Write it there; everywhere else links to it.
-
-| What you have                                    | Where it goes                      |
-| ------------------------------------------------ | ---------------------------------- |
-| How to use or run something                      | `documentation/docs/guides/`       |
-| A package's API                                  | `documentation/docs/packages/`     |
-| How the pieces fit, or a structural change       | `documentation/docs/architecture/` |
-| A challenge, a wrong turn, or a research finding | `documentation/docs/journey/`      |
-| A constraint that will bite the next person here | the matching `.claude/rules/` file |
-
-A PR body links to these homes; a section growing into an explanation belongs in one.
+Documentation stays in generative-art's Docusaurus site
+(`cnotv/generative-art`, `documentation/docs/`); this repository has none of its own. A
+finding about this page goes there as a journey doc, and a constraint that will bite the
+next person here goes in the matching `.claude/rules/` file. A PR body links to those homes.
 
 ## Project facts
 
 - **Dev server:** `pnpm dev --port 5317 --strictPort`, served at `http://localhost:5317`
-- **Routes:** `/<dir-lowercase>/<ViewBaseName>` from the view tree, e.g. `/games/GoombaRunner`
-- **Verify notes:** `documentation/docs/guides/visual-verification-with-screenshots.md`; shots: `pnpm capture`
-- **Checks:** `pnpm lint`, `pnpm lint:css`, `pnpm test:unit`; **Security:** `pnpm audit --prod`, no threat model
-- **Docs home:** `documentation/docs/`, homes above; **Docs build:** `pnpm docs:build`
-- **Preview deploys:** the `deploy/netlify` check's `targetUrl`, with the view's route appended; PR media (no `pr-preview` workflow): `media-capture` screenshot and one GIF, the GIF committed to `pr-media` and linked by a sha pinned raw URL (`documentation/docs/guides/videos-in-pull-requests.md`), all in the body before ready
+- **Routes:** `/` only; every other path redirects there
+- **Checks:** `pnpm lint`, `pnpm lint:css`, `pnpm test:unit`, `pnpm build`; **Security:** `pnpm audit --prod`, no threat model
+- **Dead code:** `npx knip` (entry points in `knip.json`)
+- **Deploy:** a push to `main` builds `ghcr.io/cnotv/cnotv-portfolio` and runs it on the Hetzner host, port 3002
+- **Analytics:** Umami (cnotv.xyz only) and Sentry, from the `VITE_UMAMI_WEBSITE_ID` and `VITE_SENTRY_DSN` secrets
+- **PR media:** `media-capture` screenshot and one GIF of `/`, in the body before ready
 - **Scoped rules and local skills:** `.claude/rules/` and `.claude/skills/`, indexed below
 
 ### Done checklist
 
-- [ ] New view has a `src/config/viewsMeta.json` entry
-- [ ] New package is in the `packages` array in `vite.config.ts`
-- [ ] New `LobbyUI*` component or variant appears in `LobbyUIShowcase.vue`
-- [ ] New game has its own `documentation/docs/journey/<game-name>.md`
-- [ ] Touched a 3D scene or asset: `perf-check` ran; changed a file a guide tracks: `sync-docs` ran
+- [ ] Touched the 3D scene or an asset: `perf-check` ran
+- [ ] A new third-party request is named in the privacy policy
 - [ ] Every artifact the issue named exists, not just the ones forced by a deletion
 
 ## Scoped rules
 
 Each file in `.claude/rules/` declares a `paths:` glob and loads only when a matching file is touched. Read one directly if you are working in its area without opening a matching file.
 
-| File in `.claude/rules/` | Covers                                                                       |
-| ------------------------ | ---------------------------------------------------------------------------- |
-| `vue-components.md`      | anything in `src/components/` or `src/views/`, or a stylesheet               |
-| `lobby-ui.md`            | the LobbyUI kit, a game overlay or dialog, or anything in `src/views/Games/` |
-| `threejs-views.md`       | a 3D view, scene, animation loop, or the threejs package                     |
-| `music.md`               | a Strudel style, song, or music pattern                                      |
-| `packages.md`            | anything in `packages/`, and whether a new one is earned at all              |
-| `tests.md`               | any `*.test.ts`                                                              |
-| `docs.md`                | anything in `documentation/`                                                 |
-| `colour.md`              | choosing any colour — a material, a background, a token, a diagram           |
+| File in `.claude/rules/` | Covers                                                             |
+| ------------------------ | ------------------------------------------------------------------ |
+| `vue-components.md`      | anything in `src/components/` or `src/views/`, or a stylesheet     |
+| `threejs-views.md`       | a 3D view, scene, animation loop, or the threejs package           |
+| `tests.md`               | any `*.test.ts`                                                    |
+| `colour.md`              | choosing any colour — a material, a background, a token, a diagram |
 
 ## Procedures
 
@@ -140,9 +126,6 @@ Each file in `.claude/rules/` declares a `paths:` glob and loads only when a mat
 `finish-change`, `journey-doc`, `security-audit`) from agent-base in every session, local or cloud.
 Never copy them into `.claude/skills/`, which holds only this repository's own skills:
 
-| Skill           | Use when                                                        |
-| --------------- | --------------------------------------------------------------- |
-| `perf-check`    | a 3D scene or asset changed, or something is reported slow      |
-| `sync-docs`     | you changed a file that a tutorial documents                    |
-| `strudel-sound` | asked for music or a sound, or to save a pattern as WAV or MIDI |
-| `sound-design`  | deciding what a sound is made of, editing audio, or teaching it |
+| Skill        | Use when                                                   |
+| ------------ | ---------------------------------------------------------- |
+| `perf-check` | a 3D scene or asset changed, or something is reported slow |

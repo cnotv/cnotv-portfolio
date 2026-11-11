@@ -22,7 +22,8 @@
     "prepare": "husky",
     "webp": "node ./scripts/optimize.js",
     "lighthouse": "node scripts/lighthouse.mjs",
-    "lighthouse:prod": "node scripts/lighthouse.mjs https://cnotv.xyz/"
+    "lighthouse:prod": "node scripts/lighthouse.mjs https://cnotv.xyz/",
+    "size": "size-limit"
   },
   "lint-staged": {
     "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": [
