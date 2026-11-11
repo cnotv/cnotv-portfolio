@@ -5,7 +5,7 @@ import LegalLayout from './LegalLayout.vue'
 <template>
   <LegalLayout title="Datenschutzerklärung">
     <h2>Verantwortlicher</h2>
-    <p>[PLACEHOLDER: full name, address and contact email, as in the Impressum]</p>
+    <p>[PLACEHOLDER: full name, address and contact email]</p>
 
     <h2>Hosting</h2>
     <p>

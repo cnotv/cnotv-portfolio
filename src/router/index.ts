@@ -9,11 +9,6 @@ const router = createRouter({
       component: () => import('@/views/Experiments/LandingPage/LandingPage.vue')
     },
     {
-      path: '/impressum',
-      name: 'Impressum',
-      component: () => import('@/views/Legal/ImpressumPage.vue')
-    },
-    {
       path: '/datenschutz',
       name: 'Datenschutz',
       component: () => import('@/views/Legal/PrivacyPage.vue')
