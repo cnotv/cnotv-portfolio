@@ -49,7 +49,8 @@ import {
   OWNER_PROFESSION,
   OWNER_SUMMARY,
   OWNER_PROFILES,
-  BUILD_NOTES
+  BUILD_NOTES,
+  SITE_LINKS
 } from './config'
 import type { LogoJumpPath, LogoRest, HeroLook, HeroLookParts } from './types'
 import { createHeroLook, registerLookElements, refreshLookElements, getNextLook } from './heroLook'
@@ -927,6 +928,16 @@ onUnmounted(() => {
               aria-hidden="true"
             />
           </a>
+        </nav>
+        <nav class="landing-page__notes" aria-label="Other sites">
+          <ul class="landing-page__notes-list">
+            <li v-for="site in SITE_LINKS" :key="site.url">
+              <a class="landing-page__note" :href="site.url">{{ site.label }}</a>
+              (<a class="landing-page__note" :href="site.repository" target="_blank" rel="noopener"
+                >code</a
+              >)
+            </li>
+          </ul>
         </nav>
         <nav class="landing-page__notes" aria-label="How this page was built">
           <ul class="landing-page__notes-list">
